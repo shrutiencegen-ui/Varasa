@@ -1,0 +1,176 @@
+.event-slider-section {
+  background: linear-gradient(135deg, #f5e6c8 0%, #e9d8a6 50%, #d4af37 100%);
+  padding: 120px 20px 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Decorative Glow */
+.event-slider-section::before,
+.event-slider-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.event-slider-section::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+  top: -200px;
+  left: -200px;
+}
+
+.event-slider-section::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+  bottom: -200px;
+  right: -200px;
+}
+
+/* Main Card */
+.event-feature-card {
+  background: #fff8e8;
+  border-radius: 22px;
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+ 
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  border: 2px solid #d4af37;
+  position: relative;
+  z-index: 1;
+}
+
+/* Image */
+.event-feature-image img {
+  width: 450px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.event-feature-content {
+  padding: 45px 55px;
+  flex: 1;
+}
+
+.event-feature-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #5a2d1a;
+  margin-bottom: 22px;
+  line-height: 1.2;
+}
+
+.event-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #5c4033;
+  margin-bottom: 25px;
+}
+
+.event-meta span {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #6b2b1c;
+  font-size: 1rem;
+}
+
+/* Slider Buttons */
+.slider-buttons {
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.slider-buttons button {
+  background: #5a2d1a;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 8px 16px;
+  margin: 0 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.slider-buttons button:hover {
+  background: #3b1d12;
+}
+
+/* Dots */
+.slider-dots {
+  margin-top: 25px;
+  z-index: 2;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  margin: 0 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #5a2d1a;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeSlide 0.6s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .event-feature-card {
+    flex-direction: column;
+  }
+
+  .event-feature-image img {
+    width: 100%;
+    height: 260px;
+  }
+
+  .event-feature-content {
+    padding: 30px 25px;
+    text-align: center;
+  }
+
+  .event-feature-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .event-desc {
+    font-size: 1rem;
+  }
+}

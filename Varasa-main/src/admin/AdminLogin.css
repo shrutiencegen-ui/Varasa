@@ -1,0 +1,115 @@
+/* ===============================
+   VARASA HERITAGE LOGIN PANEL
+   Safe & Responsive Version
+   =============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap');
+
+/* RESET - Fakt login wrapper chya aatle elements reset kara */
+.admin-login-wrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* IMPORTANT: html aani body madhun 'overflow: hidden' kadhun takla aahe,
+   jyamule tumcha main website cha scroll suru rahil.
+*/
+.admin-login-wrapper {
+  position: fixed; /* Screen var ek layer sarkha basel */
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, hsl(18, 55%, 23%), #6b2b1c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Home page chya header chya pan var disel */
+  font-family: 'EB Garamond', serif;
+  overflow: hidden; /* Fakt login screen chya baher scroll hou naye mhanun */
+}
+
+/* ================= LOGIN BOX ================= */
+.admin-login-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 35px;
+  border-radius: 20px;
+  background: #fffaf0;
+  border: 3px solid #d4af37;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+/* ================= LOGO ================= */
+.admin-login-logo {
+  width: 90px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+/* ================= TITLE ================= */
+.admin-login-box h2 {
+  font-family: 'Cinzel', serif;
+  color: #5a2d1a;
+  margin-bottom: 25px;
+  font-size: clamp(20px, 4vw, 28px);
+}
+
+/* ================= INPUT ================= */
+.admin-input {
+  width: 100%;
+  height: 52px;
+  margin-bottom: 18px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid #d4af37;
+  background: #fffdf6;
+  font-size: 15px;
+  outline: none;
+  font-family: 'EB Garamond', serif;
+}
+
+.admin-input:focus {
+  border-color: #5a2d1a;
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+}
+
+/* ================= BUTTON ================= */
+.login-btn {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #5a2d1a, #d4af37);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .admin-login-box {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-login-box {
+    padding: 30px 20px;
+    border-width: 2px;
+  }
+  .admin-input, .login-btn {
+    height: 48px;
+    font-size: 14px;
+  }
+}
