@@ -15,7 +15,8 @@ app.config["JWT_REFRESH_TOKEN_EXPIRES"]= timedelta(days=7)
 # ---------------- CORS ----------------
 allowed_origins = [
     "https://varasa-1.onrender.com",
-    "https://varasa-main-six.vercel.app"
+    "https://varasa-main-six.vercel.app",
+    "https://frabjous-selkie-b4f4ee.netlify.app"
 ]
 
 CORS(
