@@ -76,45 +76,45 @@ export default function AdminDashboard() {
   }, [section]);
 
   const validateFields = () => {
-    let errors = { title: "", desc: "", img: "", date: "" };
-    let valid = true;
+  if (!selected) return false;
 
-    if (!selected.title?.trim()) {
-      errors.title = "Title is required";
-      valid = false;
-    }
+  let errors = { title: "", desc: "", img: "", date: "" };
+  let valid = true;
 
-    if (!selected.desc?.trim()) {
-      errors.desc = "Description is required";
-      valid = false;
-    }
+  if (!selected?.title?.trim()) {
+    errors.title = "Title is required";
+    valid = false;
+  }
 
-    if (!selected.img) {
-      errors.img = "Image is required";
-      valid = false;
-    }
+  if (!selected?.desc?.trim()) {
+    errors.desc = "Description is required";
+    valid = false;
+  }
 
-    if (isEventSection && !selected.date) {
-      errors.date = "Date is required";
-      valid = false;
-    }
+  if (!selected?.img) {
+    errors.img = "Image is required";
+    valid = false;
+  }
 
-    setFieldErrors(errors);
-    return valid;
-  };
+  if (isEventSection && !selected?.date) {
+    errors.date = "Date is required";
+    valid = false;
+  }
 
+  setFieldErrors(errors);
+  return valid;
+};
   const addNew = async () => {
     if (items.length >= cardLimit) {
       alert(`Limit reached! Only ${cardLimit} cards allowed.`);
       return;
     }
-
-    await createItem(section, {
-      title: "",
-      desc: "",
-      img: "",
-      date: ""
-    });
+      await createItem(section, {
+        title: "",
+        desc: "",
+        img: "",
+        ...(isEventSection && { date: "" })
+      });
 
     const refreshed = await getSection(section);
     setItems(refreshed);
@@ -251,7 +251,7 @@ export default function AdminDashboard() {
                 <label>Select Event Date</label>
                 <input
                   type="date"
-                  value={selected.date || ""}
+                  value={selected?.date || ""}
                   onChange={e =>
                     setSelected({ ...selected, date: e.target.value })
                   }
