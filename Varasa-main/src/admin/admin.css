@@ -37,7 +37,6 @@
 }
 
 /* ================= SIDEBAR ================= */
-
 .admin-sidebar {
   width: 290px;
   background: linear-gradient(180deg, var(--brown-dark), var(--brown-deep));
@@ -48,6 +47,8 @@
   align-items: center;
   box-shadow: 8px 0 25px rgba(0,0,0,0.25);
   height: 100%;
+  overflow-y: auto; /* 🔥 Sidebar scroll enable */
+  scrollbar-width: thin;
 }
 
 /* Logo Center */

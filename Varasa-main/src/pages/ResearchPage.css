@@ -46,8 +46,10 @@
   position: relative;
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  object-fit: contain; /* ⭐ Crop avoid */
+  background: #fff7e6;
+  padding: 12px;
 }
-
 /* text */
 .research-text {
   flex: 1.1;

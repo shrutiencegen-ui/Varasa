@@ -52,7 +52,8 @@
 .event-feature-image img {
   width: 450px;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; 
+  background: #fff8e8; 
 }
 
 /* Content */
