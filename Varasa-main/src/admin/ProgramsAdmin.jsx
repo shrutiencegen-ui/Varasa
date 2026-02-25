@@ -34,7 +34,19 @@ export default function ProgramsAdmin() {
     const result = await res.json();
     return result.image_url;
   };
+ const handleImageChange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
+  // 2MB limit
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Image size must be less than 2MB");
+    e.target.value = "";
+    return;
+  }
+
+  setImage(file);
+};
   const handleSubmit = async () => {
     const image_url = await uploadImage();
 
@@ -83,7 +95,7 @@ export default function ProgramsAdmin() {
         </select>
         <br /><br />
 
-        <input type="file" onChange={e => setImage(e.target.files[0])} />
+       <input type="file" accept="image/*" onChange={handleImageChange} />
         <br /><br />
 
         <button onClick={handleSubmit}>Add</button>

@@ -99,22 +99,22 @@ export default function AdminLogin() {
               onKeyDown={handleEnter}
             />
             <span
-              className="toggle-pass"
-              onClick={() => setShowPass(!showPass)}
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-              }}
-            >
-              {showPass ? (
-                <AiOutlineEyeInvisible size={20} />
-              ) : (
-                <AiOutlineEye size={20} />
-              )}
-            </span>
+  className="toggle-pass"
+  onClick={() => setShowPass(prev => !prev)}
+  style={{
+    position: "absolute",
+    right: "10px",
+    top: "50%",
+    transform: "translateY(-50%)",
+    cursor: "pointer",
+  }}
+>
+  {showPass ? (
+    <AiOutlineEye size={20} />           // 👁 OPEN = visible
+  ) : (
+    <AiOutlineEyeInvisible size={20} />  // 🙈 CLOSED = hidden
+  )}
+</span>
           </div>
         </div>
 

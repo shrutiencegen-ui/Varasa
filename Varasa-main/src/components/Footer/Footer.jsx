@@ -12,7 +12,7 @@ export default function Footer() {
               {/* VW_078 & VW_079: Full Organization Name */}
               VĀRASĀ - Association for Cultural Heritage and Archaeology. 
               A non-profit organization dedicated to cultural heritage preservation, 
-              archaeological research, and awareness initiatives.
+              archaeological research, and awareness initiatives. We work towards safeguarding tangibleand intangible heritage for future generations.
             </p>
           </div>
 

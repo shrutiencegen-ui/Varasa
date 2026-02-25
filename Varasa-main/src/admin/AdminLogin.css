@@ -94,7 +94,33 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
+/* ERROR MESSAGE */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 18px; /* 👈 Increased space above button */
+  text-align: center;
+  font-weight: 600;
+}
 
+/* Red Border */
+.error-border {
+  border: 1px solid red !important;
+}
+
+/* Password Eye Fix */
+.password-field {
+  position: relative;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {

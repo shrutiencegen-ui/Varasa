@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logoSymbol from "../../assets/logo-symbol.jpg";
 
 export default function Header() {
@@ -53,17 +53,17 @@ export default function Header() {
             <span></span>
           </button>
 
-          <nav
-            className={`nav-links ${menuOpen ? "open" : ""}`}
-            aria-label="Main Navigation"
-          >
-            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-            <Link to="/events" onClick={() => setMenuOpen(false)}>Events</Link>
-            <Link to="/research" onClick={() => setMenuOpen(false)}>Research</Link>
-            <Link to="/donations" onClick={() => setMenuOpen(false)}>Donate/Grants</Link>
-            <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</Link>
-          </nav>
+         <nav
+  className={`nav-links ${menuOpen ? "open" : ""}`}
+  aria-label="Main Navigation"
+>
+  <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
+  <NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink>
+  <NavLink to="/events" onClick={() => setMenuOpen(false)}>Events</NavLink>
+  <NavLink to="/research" onClick={() => setMenuOpen(false)}>Research</NavLink>
+  <NavLink to="/donations" onClick={() => setMenuOpen(false)}>Donate/Grants</NavLink>
+  <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</NavLink>
+</nav>
         </div>
       </div>
     </header>

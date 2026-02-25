@@ -30,7 +30,7 @@ export default function LearningSeminarSection() {
       abstract:
         "This study delves into the fascinating archaeological landscapes of Central India, a region rich with remnants of ancient civilizations. Through a series of systematic excavations and surveys conducted between 2019–2023, the research documents the evolution of human settlement patterns, technological advancements, and socio-economic transitions from the Megalithic period to the Medieval era.",
       introduction:
-        "Central India, with its strategic location and rich cultural heritage, has long served as a corridor for trade, migration, and cultural exchange. The research emphasizes how the rivers, plateaus, and forest belts shaped human habitation and resource utilization."
+        "Central India, with its strategic location and rich cultural heritage, has long served as a corridor for trade, migration, and cultural exchange. The research emphasizes how the rivers, plateaus, and forest belts shaped human habitation and resource utilization.The project also integrates interdisciplinary approaches involving archaelogy, geo-morphology and material culture analysis. "
     },
     {
       img: seminar3,
@@ -40,7 +40,7 @@ export default function LearningSeminarSection() {
       abstract:
         "This study delves into the fascinating archaeological landscapes of Central India, a region rich with remnants of ancient civilizations. Through a series of systematic excavations and surveys conducted between 2019–2023, the research documents the evolution of human settlement patterns, technological advancements, and socio-economic transitions from the Megalithic period to the Medieval era.",
       introduction:
-        "Central India, with its strategic location and rich cultural heritage, has long served as a corridor for trade, migration, and cultural exchange. The research emphasizes how the rivers, plateaus, and forest belts shaped human habitation and resource utilization."
+        "Central India, with its strategic location and rich cultural heritage, has long served as a corridor for trade, migration, and cultural exchange. The research emphasizes how the rivers, plateaus, and forest belts shaped human habitation and resource utilization. The project also integrates interdisiplinary approaches involving archaelogy, geo-morphology and material culture analysis. "
     }
   ];
 

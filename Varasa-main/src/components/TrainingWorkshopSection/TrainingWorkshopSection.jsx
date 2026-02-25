@@ -45,18 +45,18 @@ export default function TrainingWorkshopSection() {
 
             <h4 className="training-subheading">Practical Highlights</h4>
             <ul className="training-list">
-              <li><b>Excavation Techniques:</b> Learn professional excavation methods including trenching, stratigraphic observation, artifact handling, and soil profiling.</li>
-              <li><b>Documentation & Recording:</b> Accurate documentation using field notes, drawing, photography, and digital mapping tools.</li>
-              <li><b>Conservation Practices:</b> Preventive and remedial conservation of artifacts and site features.</li>
-              <li><b>Cultural Outreach:</b> Engage with local heritage communities and understand settlement landscapes.</li>
-              <li><b>Expert Mentorship:</b> Training from seasoned archaeologists & conservation professionals.</li>
+              <li><b>Excavation Techniques:</b> Learn professional excavation methods including trenching, stratigraphic observation, artifact handling, and soil profiling under expert supervision.</li>
+              <li><b>Documentation & Recording:</b> Understand the importance of accurate documentation using field notes, drawing, photography, and digital mapping tools (Total Station , GPS, GIS). </li>
+              <li><b>Conservation Practices:</b>Gain insight into preventive and remedial conservation of artifacts and site features to ensure long-term preservation.</li>
+              <li><b>Cultural Context:</b> Engage with local heritage communities and understand how cultural,environmental and hiostorical factors shaped ancient settlements .</li>
+              <li><b>Expert Mentorship:</b> Receive hands-on training from seasoned archaeologists and conservation professionals associated with Varasa Foundation.</li>
             </ul>
 
             <h4 className="training-subheading">Trainers / Mentors</h4>
             <ul className="training-mentors">
-              <li>Ms. Laxmi Zatre – Heritage Conservation Expert</li>
-              <li>Mr. Abhijit Khodke – GIS & Documentation Specialist</li>
-              <li>Dr. Yashasudha — Archaeology & Research Director</li>
+              <li>Ms. Leena Zilpe – Heritage Conservation Expert</li>
+              <li>Mr. Abhijit Khedkar – GIS & Documentation Specialist</li>
+              <li>Dr. Yashdatta sir — Archaeology & Research Director</li>
             </ul>
 
             <h4 className="training-subheading">Program Schedule</h4>
@@ -91,7 +91,7 @@ export default function TrainingWorkshopSection() {
               archaeology and cultural preservation.
             </p>
 
-            {/* <button className="training-apply-btn">Apply Now</button> */}
+            <button className="training-apply-btn">Apply Now</button>
 
           </div>
         </div>

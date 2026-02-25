@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import { getSection } from "../api/contentApi";
 import "./EventsPage.css";
+import Footer from "../components/Footer/Footer";
 
 const BACKEND_URL = "https://varasa-backend.onrender.com";
 
@@ -122,6 +123,7 @@ export default function EventsPage() {
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 }
