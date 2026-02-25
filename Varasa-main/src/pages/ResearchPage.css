@@ -38,17 +38,26 @@
   transform: translate(-55%, -55%);
   z-index: 0;
 }
+.research-img-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+/* Fixed elegant frame */
 .research-image {
   width: 100%;
   max-width: 520px;
+  height: 420px;                 /* ⭐ fixed height for balance */
+  object-fit: contain;           /* ⭐ no crop */
+  background: #fff7e6;
+  padding: 20px;
   border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   position: relative;
   z-index: 1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-  object-fit: contain; /* ⭐ Crop avoid */
-  background: #fff7e6;
-  padding: 12px;
 }
 /* text */
 .research-text {
