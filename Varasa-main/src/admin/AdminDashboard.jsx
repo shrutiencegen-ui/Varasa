@@ -46,23 +46,28 @@ export default function AdminDashboard() {
     date: ""
   });
 
-  const currentSectionObj = pageSections[page].find(sec => sec.key === section);
+  const currentSectionObj = pageSections[page]?.find(
+    sec => sec.key === section
+  );
   const cardLimit = currentSectionObj?.limit || 4;
 
   const isEventSection =
     section === "events" || section === "events_page";
 
+  /* Auth Check */
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) window.location.href = "/admin-login";
   }, []);
 
+  /* Reset when page changes */
   useEffect(() => {
     setSection(pageSections[page][0].key);
     setSelected(null);
     setPreviewOpen(false);
   }, [page]);
 
+  /* Load Data */
   useEffect(() => {
     async function load() {
       try {
@@ -75,51 +80,56 @@ export default function AdminDashboard() {
     load();
   }, [section]);
 
+  /* Validation */
   const validateFields = () => {
-  if (!selected) return false;
+    if (!selected) return false;
 
-  let errors = { title: "", desc: "", img: "", date: "" };
-  let valid = true;
+    let errors = { title: "", desc: "", img: "", date: "" };
+    let valid = true;
 
-  if (!selected?.title?.trim()) {
-    errors.title = "Title is required";
-    valid = false;
-  }
+    if (!selected?.title?.trim()) {
+      errors.title = "Title is required";
+      valid = false;
+    }
 
-  if (!selected?.desc?.trim()) {
-    errors.desc = "Description is required";
-    valid = false;
-  }
+    if (!selected?.desc?.trim()) {
+      errors.desc = "Description is required";
+      valid = false;
+    }
 
-  if (!selected?.img) {
-    errors.img = "Image is required";
-    valid = false;
-  }
+    if (!selected?.img) {
+      errors.img = "Image is required";
+      valid = false;
+    }
 
-  if (isEventSection && !selected?.date) {
-    errors.date = "Date is required";
-    valid = false;
-  }
+    if (isEventSection && !selected?.date) {
+      errors.date = "Date is required";
+      valid = false;
+    }
 
-  setFieldErrors(errors);
-  return valid;
-};
+    setFieldErrors(errors);
+    return valid;
+  };
+
+  /* Add New */
   const addNew = async () => {
     if (items.length >= cardLimit) {
       alert(`Limit reached! Only ${cardLimit} cards allowed.`);
       return;
     }
-      await createItem(section, {
-        title: "",
-        desc: "",
-        img: "",
-        ...(isEventSection && { date: "" })
-      });
+
+    await createItem(section, {
+      title: "",
+      desc: "",
+      img: "",
+      ...(isEventSection && { date: "" })
+    });
 
     const refreshed = await getSection(section);
     setItems(refreshed);
   };
 
+  /* Delete */
   const deleteItem = async id => {
     if (window.confirm("Are you sure?")) {
       await deleteAPI(id);
@@ -130,6 +140,7 @@ export default function AdminDashboard() {
     }
   };
 
+  /* Save */
   const saveItem = async () => {
     if (!validateFields()) return;
 
@@ -148,6 +159,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-layout">
+      {/* Sidebar */}
       <div className="admin-sidebar">
         <div>
           <div className="admin-logo-box">
@@ -218,6 +230,7 @@ export default function AdminDashboard() {
         </button>
       </div>
 
+      {/* Editor */}
       <div className="admin-editor">
         {selected ? (
           <div className="editor-card">
@@ -225,7 +238,7 @@ export default function AdminDashboard() {
 
             <label>Title</label>
             <input
-              value={selected.title || ""}
+              value={selected?.title || ""}
               onChange={e =>
                 setSelected({ ...selected, title: e.target.value })
               }
@@ -236,7 +249,7 @@ export default function AdminDashboard() {
 
             <label>Description</label>
             <textarea
-              value={selected.desc || ""}
+              value={selected?.desc || ""}
               onChange={e =>
                 setSelected({ ...selected, desc: e.target.value })
               }
@@ -245,7 +258,7 @@ export default function AdminDashboard() {
               <p className="field-error">{fieldErrors.desc}</p>
             )}
 
-            {/* 🔥 Date Picker Only For Events */}
+            {/* Date Picker */}
             {isEventSection && (
               <>
                 <label>Select Event Date</label>
@@ -265,26 +278,43 @@ export default function AdminDashboard() {
 
             <label>Upload Image (Max 2MB)</label>
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={async e => {
-                const file = e.target.files[0];
-                if (!file) return;
+            <div className="image-upload-row">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={async e => {
+                  const file = e.target.files[0];
+                  if (!file) return;
 
-                if (file.size > MAX_IMAGE_SIZE) {
-                  setFieldErrors(prev => ({
-                    ...prev,
-                    img: "Image must be under 2MB"
-                  }));
-                  return;
-                }
+                  if (file.size > MAX_IMAGE_SIZE) {
+                    setFieldErrors(prev => ({
+                      ...prev,
+                      img: "Image must be under 2MB"
+                    }));
+                    return;
+                  }
 
-                const url = await uploadImage(file);
-                setSelected({ ...selected, img: url });
-                setFieldErrors(prev => ({ ...prev, img: "" }));
-              }}
-            />
+                  const url = await uploadImage(file);
+                  setSelected({ ...selected, img: url });
+                  setFieldErrors(prev => ({ ...prev, img: "" }));
+                }}
+              />
+
+              {selected?.img && (
+                <div className="image-preview-wrapper">
+                  <img
+                    src={
+                      selected.img.startsWith("http")
+                        ? selected.img
+                        : `${IMG_BASE_URL}${selected.img}`
+                    }
+                    alt="Preview"
+                    className="admin-preview-thumb"
+                    onClick={() => setPreviewOpen(true)}
+                  />
+                </div>
+              )}
+            </div>
 
             <button
               className="save-btn"
@@ -300,6 +330,34 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
+
+      {/* Image Modal */}
+      {previewOpen && selected?.img && (
+        <div
+          className="image-modal-overlay"
+          onClick={() => setPreviewOpen(false)}
+        >
+          <div
+            className="image-modal-content"
+            onClick={e => e.stopPropagation()}
+          >
+            <img
+              src={
+                selected.img.startsWith("http")
+                  ? selected.img
+                  : `${IMG_BASE_URL}${selected.img}`
+              }
+              alt="Full Preview"
+            />
+            <button
+              className="modal-close-btn"
+              onClick={() => setPreviewOpen(false)}
+            >
+              ✖
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
