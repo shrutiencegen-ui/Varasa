@@ -42,47 +42,41 @@ export default function AdminDashboard() {
   const [fieldErrors, setFieldErrors] = useState({
     title: "",
     desc: "",
-    img: ""
+    img: "",
+    date: ""
   });
 
   const currentSectionObj = pageSections[page].find(sec => sec.key === section);
   const cardLimit = currentSectionObj?.limit || 4;
 
-  /* Auth */
+  const isEventSection =
+    section === "events" || section === "events_page";
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) window.location.href = "/admin-login";
   }, []);
 
-  /* Change section when page changes */
   useEffect(() => {
     setSection(pageSections[page][0].key);
+    setSelected(null);
+    setPreviewOpen(false);
   }, [page]);
 
-  /* Load Data */
-
   useEffect(() => {
-  setSelected(null);       
-  setPreviewOpen(false);    
-  async function load() {
-    try {
-      const data = await getSection(section);
-      setItems(data || []);
-    } catch {
-      alert("Failed to load data.");
+    async function load() {
+      try {
+        const data = await getSection(section);
+        setItems(data || []);
+      } catch {
+        alert("Failed to load data.");
+      }
     }
-  }
-  load();
-}, [section]);
-useEffect(() => {
-  setSection(pageSections[page][0].key);
-  setSelected(null);        // 🔥 clear image preview
-  setPreviewOpen(false);
-}, [page]);
+    load();
+  }, [section]);
 
-  /* Validation */
   const validateFields = () => {
-    let errors = { title: "", desc: "", img: "" };
+    let errors = { title: "", desc: "", img: "", date: "" };
     let valid = true;
 
     if (!selected.title?.trim()) {
@@ -100,6 +94,11 @@ useEffect(() => {
       valid = false;
     }
 
+    if (isEventSection && !selected.date) {
+      errors.date = "Date is required";
+      valid = false;
+    }
+
     setFieldErrors(errors);
     return valid;
   };
@@ -110,12 +109,18 @@ useEffect(() => {
       return;
     }
 
-    await createItem(section, { title: "", desc: "", img: "" });
+    await createItem(section, {
+      title: "",
+      desc: "",
+      img: "",
+      date: ""
+    });
+
     const refreshed = await getSection(section);
     setItems(refreshed);
   };
 
-  const deleteItem = async (id) => {
+  const deleteItem = async id => {
     if (window.confirm("Are you sure?")) {
       await deleteAPI(id);
       const refreshed = await getSection(section);
@@ -143,7 +148,6 @@ useEffect(() => {
 
   return (
     <div className="admin-layout">
-      {/* Sidebar */}
       <div className="admin-sidebar">
         <div>
           <div className="admin-logo-box">
@@ -214,7 +218,6 @@ useEffect(() => {
         </button>
       </div>
 
-      {/* Editor */}
       <div className="admin-editor">
         {selected ? (
           <div className="editor-card">
@@ -233,7 +236,6 @@ useEffect(() => {
 
             <label>Description</label>
             <textarea
-              
               value={selected.desc || ""}
               onChange={e =>
                 setSelected({ ...selected, desc: e.target.value })
@@ -242,45 +244,47 @@ useEffect(() => {
             {fieldErrors.desc && (
               <p className="field-error">{fieldErrors.desc}</p>
             )}
-           <label>Upload Image (Max 2MB)</label>
 
-        <div className="image-upload-row">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={async e => {
-              const file = e.target.files[0];
-              if (!file) return;
+            {/* 🔥 Date Picker Only For Events */}
+            {isEventSection && (
+              <>
+                <label>Select Event Date</label>
+                <input
+                  type="date"
+                  value={selected.date || ""}
+                  onChange={e =>
+                    setSelected({ ...selected, date: e.target.value })
+                  }
+                  onKeyDown={e => e.preventDefault()}
+                />
+                {fieldErrors.date && (
+                  <p className="field-error">{fieldErrors.date}</p>
+                )}
+              </>
+            )}
 
-              if (file.size > MAX_IMAGE_SIZE) {
-                setFieldErrors(prev => ({
-                  ...prev,
-                  img: "Image must be under 2MB"
-                }));
-                return;
-              }
+            <label>Upload Image (Max 2MB)</label>
 
-              const url = await uploadImage(file);
-              setSelected({ ...selected, img: url });
-              setFieldErrors(prev => ({ ...prev, img: "" }));
-            }}
-          />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={async e => {
+                const file = e.target.files[0];
+                if (!file) return;
 
-          {selected.img && (
-            <div className="image-preview-wrapper">
-              <img
-                src={
-                  selected.img.startsWith("http")
-                    ? selected.img
-                    : `${IMG_BASE_URL}${selected.img}`
+                if (file.size > MAX_IMAGE_SIZE) {
+                  setFieldErrors(prev => ({
+                    ...prev,
+                    img: "Image must be under 2MB"
+                  }));
+                  return;
                 }
-                alt="Preview"
-                className="admin-preview-thumb"
-                onClick={() => setPreviewOpen(true)}
-              />
-            </div>
-          )}
-        </div>
+
+                const url = await uploadImage(file);
+                setSelected({ ...selected, img: url });
+                setFieldErrors(prev => ({ ...prev, img: "" }));
+              }}
+            />
 
             <button
               className="save-btn"
@@ -296,34 +300,6 @@ useEffect(() => {
           </div>
         )}
       </div>
-
-      {/* Modal OUTSIDE editor */}
-      {previewOpen && selected?.img && (
-        <div
-          className="image-modal-overlay"
-          onClick={() => setPreviewOpen(false)}
-        >
-          <div
-            className="image-modal-content"
-            onClick={e => e.stopPropagation()}
-          >
-            <img
-              src={
-                selected.img.startsWith("http")
-                  ? selected.img
-                  : `${IMG_BASE_URL}${selected.img}`
-              }
-              alt="Full Preview"
-            />
-            <button
-              className="modal-close-btn"
-              onClick={() => setPreviewOpen(false)}
-            >
-              ✖
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
