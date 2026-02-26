@@ -8,6 +8,7 @@ import {
 } from "../api/contentApi";
 import "./admin.css";
 import logoSymbol from "../assets/logo-symbol.png";
+import { X } from "lucide-react"; // Cross icon साठी
 
 const IMG_BASE_URL = "https://varasa-1.onrender.com";
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
@@ -37,7 +38,7 @@ export default function AdminDashboard() {
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(false); // आता हे वापरले जाईल
 
   const currentSectionObj = pageSections[page]?.find(
     sec => sec.key === section
@@ -121,14 +122,18 @@ export default function AdminDashboard() {
     setLoading(false);
   };
 
+  // इमेज URL जनरेट करण्यासाठी फंक्शन
+  const getImageUrl = (imgStr) => {
+    if (!imgStr) return "";
+    return imgStr.startsWith("http") ? imgStr : `${IMG_BASE_URL}${imgStr}`;
+  };
+
   return (
     <div className="admin-layout">
       
       {/* SIDEBAR */}
       <div className="admin-sidebar">
-
         <div className="sidebar-top">
-
           <div className="admin-logo-box">
             <img src={logoSymbol} alt="Logo" />
           </div>
@@ -184,7 +189,6 @@ export default function AdminDashboard() {
               </li>
             ))}
           </ul>
-
         </div>
 
         <button
@@ -196,14 +200,12 @@ export default function AdminDashboard() {
         >
           Logout
         </button>
-
       </div>
 
       {/* EDITOR */}
       <div className="admin-editor">
         {selected ? (
           <div className="editor-card">
-
             <h3>Edit Card</h3>
 
             <label>Title</label>
@@ -252,15 +254,15 @@ export default function AdminDashboard() {
             />
 
             {selected.img && (
-              <img
-                src={
-                  selected.img.startsWith("http")
-                    ? selected.img
-                    : `${IMG_BASE_URL}${selected.img}`
-                }
-                alt=""
-                className="admin-preview-thumb"
-              />
+              <div className="preview-container">
+                <p className="preview-hint">Click image to enlarge</p>
+                <img
+                  src={getImageUrl(selected.img)}
+                  alt="Thumbnail"
+                  className="admin-preview-thumb cursor-pointer"
+                  onClick={() => setPreviewOpen(true)} // आता स्टेट वापरली गेली!
+                />
+              </div>
             )}
 
             <button
@@ -270,7 +272,6 @@ export default function AdminDashboard() {
             >
               {loading ? "Saving..." : "Save Changes"}
             </button>
-
           </div>
         ) : (
           <div className="empty-state">
@@ -278,6 +279,22 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
+
+      {/* FULL IMAGE PREVIEW MODAL */}
+      {previewOpen && selected?.img && (
+        <div className="image-full-preview-overlay" onClick={() => setPreviewOpen(false)}>
+          <div className="preview-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="close-preview" onClick={() => setPreviewOpen(false)}>
+              <X size={30} />
+            </button>
+            <img 
+              src={getImageUrl(selected.img)} 
+              alt="Full Preview" 
+              className="full-img" 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
