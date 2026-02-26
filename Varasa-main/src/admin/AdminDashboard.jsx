@@ -8,7 +8,7 @@ import {
 } from "../api/contentApi";
 import "./admin.css";
 import logoSymbol from "../assets/logo-symbol.png";
-import { X } from "lucide-react"; // Cross icon साठी
+import { X } from "lucide-react"; 
 
 const IMG_BASE_URL = "https://varasa-1.onrender.com";
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
@@ -121,8 +121,6 @@ export default function AdminDashboard() {
     }
     setLoading(false);
   };
-
-  // इमेज URL जनरेट करण्यासाठी फंक्शन
   const getImageUrl = (imgStr) => {
     if (!imgStr) return "";
     return imgStr.startsWith("http") ? imgStr : `${IMG_BASE_URL}${imgStr}`;
