@@ -20,10 +20,10 @@ export default function Footer() {
             <h4>Quick Links</h4> {/* VW_077: Proper Case */}
             <ul>
               <li><a href="/">Home</a></li> {/* VW_076: Added Home link */}
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#research">Research</a></li>
-              <li><a href="#donate">Donate</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/events">Events</a></li>
+              <li><a href="/research">Research</a></li>
+              <li><a href="/donate">Donate</a></li>
             </ul>
           </div>
 
