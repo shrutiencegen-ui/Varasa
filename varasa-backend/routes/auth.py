@@ -19,6 +19,7 @@ ADMIN_PASS = "varasa123"
 # ===============================
 @auth_bp.route("/login", methods=["POST"])
 def login():
+
     if not request.is_json:
         return jsonify({"message": "Invalid request format"}), 400
 
@@ -27,7 +28,10 @@ def login():
     username = data.get("username", "").strip()
     password = data.get("password", "").strip()
 
-    # Required validation
+    # ===============================
+    # REQUIRED FIELD VALIDATION
+    # ===============================
+
     if not username and not password:
         return jsonify({"message": "Username and Password are required"}), 400
 
@@ -37,17 +41,28 @@ def login():
     if not password:
         return jsonify({"message": "Password is required"}), 400
 
-    # Credential validation
+
+    # ===============================
+    # CREDENTIAL VALIDATION
+    # ===============================
+
+    # Both wrong
     if username != ADMIN_USER and password != ADMIN_PASS:
         return jsonify({"message": "Invalid username and password"}), 401
 
+    # Username wrong
     if username != ADMIN_USER:
         return jsonify({"message": "Invalid username"}), 401
 
+    # Password wrong
     if password != ADMIN_PASS:
         return jsonify({"message": "Invalid password"}), 401
 
-    # Create Tokens
+
+    # ===============================
+    # CREATE TOKENS (SUCCESS CASE)
+    # ===============================
+
     access_token = create_access_token(
         identity=username,
         expires_delta=timedelta(minutes=30)
@@ -71,6 +86,7 @@ def login():
 @auth_bp.route("/refresh", methods=["POST"])
 @jwt_required(refresh=True)
 def refresh():
+
     identity = get_jwt_identity()
 
     new_access_token = create_access_token(
