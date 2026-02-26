@@ -17,7 +17,7 @@ allowed_origins = [
     "https://varasa-1.onrender.com",
     "https://varasa-main-six.vercel.app",
     "https://varasaweb.netlify.app",
-    "varasa-125i-6b0pzb5bf-shrutiencegen-uis-projects.vercel.app"
+    "https://varasa-125i.vercel.app"
 ]
 
 CORS(
