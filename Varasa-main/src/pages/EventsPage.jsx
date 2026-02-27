@@ -4,7 +4,15 @@ import { getSection } from "../api/contentApi";
 import "./EventsPage.css";
 import Footer from "../components/Footer/Footer";
 
-const BACKEND_URL = "https://varasa-backend.onrender.com";
+const BACKEND_URL = "https://varasa-1.onrender.com";
+
+function getImageUrl(path) {
+  if (!path) return "";
+
+  if (path.startsWith("http")) return path;
+
+  return BACKEND_URL + path;
+}
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -12,14 +20,13 @@ export default function EventsPage() {
   const [loading, setLoading] = useState(true);
   const [paused, setPaused] = useState(false);
 
-  // 🔥 Fetch Events
   useEffect(() => {
     async function fetchEvents() {
       try {
         const data = await getSection("events_page");
         setEvents(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error("Failed to load events", err);
+        console.error(err);
         setEvents([]);
       } finally {
         setLoading(false);
@@ -29,23 +36,22 @@ export default function EventsPage() {
     fetchEvents();
   }, []);
 
-  // ⭐ Auto Slider with Pause
   useEffect(() => {
     if (!events.length || paused) return;
 
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % events.length);
+      setIndex(prev => (prev + 1) % events.length);
     }, 4000);
 
     return () => clearInterval(interval);
   }, [events, paused]);
 
   const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % events.length);
+    setIndex(prev => (prev + 1) % events.length);
   };
 
   const prevSlide = () => {
-    setIndex((prev) => (prev - 1 + events.length) % events.length);
+    setIndex(prev => (prev - 1 + events.length) % events.length);
   };
 
   if (loading) {
@@ -80,16 +86,18 @@ export default function EventsPage() {
   return (
     <>
       <Header />
+
       <section
         className="event-slider-section"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="event-feature-card fade-in" key={index}>
-          {event.img && event.img !== "" && (
+        <div className="event-feature-card fade-in">
+
+          {event.img && (
             <div className="event-feature-image">
               <img
-                src={`${BACKEND_URL}${event.img}`}
+                src={getImageUrl(event.img)}
                 alt={event.title}
               />
             </div>
@@ -122,7 +130,9 @@ export default function EventsPage() {
             />
           ))}
         </div>
+
       </section>
+
       <Footer />
     </>
   );

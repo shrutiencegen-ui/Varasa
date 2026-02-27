@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { getSection } from "../../api/contentApi";
+import { getImageUrl } from "../../utils/image";
+const IMG_BASE = "https://varasa-1.onrender.com";
+
+function getImageUrl(path) {
+  if (!path) return "";
+
+  if (path.startsWith("http")) return path;
+
+  return IMG_BASE + path;
+}
 
 export default function EventsSection() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     async function load() {
-      const data = await getSection("events");
-      setEvents(data);
+      try {
+        const data = await getSection("events");
+        setEvents(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error(err);
+        setEvents([]);
+      }
     }
+
     load();
   }, []);
 
@@ -21,7 +37,7 @@ export default function EventsSection() {
           <div className="event-card" key={e.id}>
             {e.img && (
               <img
-               src={`https://varasa-1.onrender.com/upload${e.img}`}
+                src={getImageUrl(e.img)}
                 alt={e.title}
               />
             )}

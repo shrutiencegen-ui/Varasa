@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getSection } from "../../api/contentApi";
-
+import { getImageUrl } from "../../utils/imageUtils";
 export default function ResearchHomeSection() {
   const [items, setItems] = useState([]);
 
@@ -21,9 +21,9 @@ export default function ResearchHomeSection() {
           <div className="research-card" key={item.id}>
             {item.img && (
               <img
-                src={`https://varasa-1.onrender.com/upload${item.img}`}
+                src={getImageUrl(item.img)}
                 alt={item.title}
-                className="research-icon"
+                className="research-img"
               />
             )}
 

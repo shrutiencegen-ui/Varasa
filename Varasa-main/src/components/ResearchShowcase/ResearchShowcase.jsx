@@ -43,11 +43,7 @@ export default function ResearchShowcase() {
 
                   {/* IMAGE */}
                   {item.img && (
-                    <img
-                      src={`https://varasa-1.onrender.com/upload${item.img}`}
-                      alt={item.title}
-                      className="showcase-img"
-                    />
+                    <img src={getImageUrl(item.img)} alt={item.title} className="showcase-img" />
                   )}
 
                   <div className="showcase-content">
