@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { getSection } from "../api/contentApi";
 import { getImageUrl } from "../utils/imageUtils";
+import "./EventsPage.css";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
