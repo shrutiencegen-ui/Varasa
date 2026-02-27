@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const BASE = "http://127.0.0.1:5000/api/programs";
-const UPLOAD = "http://127.0.0.1:5000/api/upload/";
+const BASE = "https://varasa-backend.onrender.com/api/programs";
+const UPLOAD = "https://varasa-backend.onrender.com/api/upload/";
 
 export default function ProgramsAdmin() {
   const [items, setItems] = useState([]);
