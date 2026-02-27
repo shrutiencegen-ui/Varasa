@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getSection } from "../../api/contentApi";
-import { getImageUrl } from "../../utils/image";
+import { getImageUrl } from "../../utils/imageUtils";
 const IMG_BASE = "https://varasa-1.onrender.com";
 
 function getImageUrl(path) {

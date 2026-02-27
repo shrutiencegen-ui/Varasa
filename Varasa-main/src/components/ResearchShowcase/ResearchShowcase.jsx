@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSection } from "../../api/contentApi";
 import "./ResearchShowcase.css";
-
+import { getImageUrl } from "../../utils/imageUtils";
 export default function ResearchShowcase() {
   const [publications, setPublications] = useState([]);
   const [seminars, setSeminars] = useState([]);
