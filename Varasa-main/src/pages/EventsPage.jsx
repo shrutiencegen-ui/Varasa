@@ -66,43 +66,47 @@ export default function EventsPage() {
     <>
       <Header />
 
-      <section
-        className="event-slider-section"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+     <section
+  className="event-slider-section"
+  onMouseEnter={() => setPaused(true)}
+  onMouseLeave={() => setPaused(false)}
+>
 
-        <button className="slider-arrow left" onClick={prevSlide}>
-          ‹
-        </button>
+  <div className="event-feature-card fade-in">
 
-        <div className="slider-card">
-          {event.img && (
-            <img
-              src={getImageUrl(event.img)}
-              alt={event.title}
-            />
-          )}
+    <div className="event-feature-image">
+      {event.img && (
+        <img
+          src={getImageUrl(event.img)}
+          alt={event.title}
+        />
+      )}
+    </div>
 
-          <h2>{event.title}</h2>
-          <p>{event.desc}</p>
-        </div>
+    <div className="event-feature-content">
+      <h2>{event.title}</h2>
+      <p className="event-desc">{event.desc}</p>
 
-        <button className="slider-arrow right" onClick={nextSlide}>
-          ›
-        </button>
+      <div className="slider-buttons">
+        <button onClick={prevSlide}>‹</button>
+        <button onClick={nextSlide}>›</button>
+      </div>
 
-        <div className="dots">
-          {events.map((_, i) => (
-            <span
-              key={i}
-              className={i === index ? "dot active" : "dot"}
-              onClick={() => setIndex(i)}
-            />
-          ))}
-        </div>
+      <div className="slider-dots">
+        {events.map((_, i) => (
+          <span
+            key={i}
+            className={i === index ? "dot active" : "dot"}
+            onClick={() => setIndex(i)}
+          />
+        ))}
+      </div>
 
-      </section>
+    </div>
+
+  </div>
+
+</section>
 
       <Footer />
     </>
