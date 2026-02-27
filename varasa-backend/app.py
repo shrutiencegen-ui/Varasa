@@ -6,7 +6,8 @@ from routes.content import content_bp
 from routes.auth import auth_bp
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
-
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
 
 # ---------------- JWT CONFIG ----------------

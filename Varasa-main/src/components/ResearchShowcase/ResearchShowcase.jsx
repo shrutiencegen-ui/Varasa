@@ -1,22 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { getSection } from "../../api/contentApi";
-import "./ResearchShowcase.css";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import  {getSection} from "../../api/contentApi";
 import { getImageUrl } from "../../utils/imageUtils";
+import "./ResearchShowcase.css";  
+
+
 export default function ResearchShowcase() {
   const [publications, setPublications] = useState([]);
   const [seminars, setSeminars] = useState([]);
   const [training, setTraining] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  /* -------- LOAD FROM BACKEND -------- */
   useEffect(() => {
     async function loadAll() {
-      const pub = await getSection("research_publications");
-      const sem = await getSection("research_seminars");
-      const train = await getSection("research_training");
+      try {
+        const pub = await getSection("research_publications");
+        const sem = await getSection("research_seminars");
+        const train = await getSection("research_training");
 
-      setPublications(pub);
-      setSeminars(sem);
-      setTraining(train);
+        setPublications(Array.isArray(pub) ? pub : []);
+        setSeminars(Array.isArray(sem) ? sem : []);
+        setTraining(Array.isArray(train) ? train : []);
+      } catch {
+        setPublications([]);
+        setSeminars([]);
+        setTraining([]);
+      } finally {
+        setLoading(false);
+      }
     }
 
     loadAll();
@@ -28,46 +40,58 @@ export default function ResearchShowcase() {
     { title: "Training & Workshop", items: training }
   ];
 
+  if (loading)
+    return <h2 className="loading-text">Loading Research...</h2>;
+
   return (
-    <section className="research-showcase-section">
-      <div className="research-showcase-container">
+    <>
+      <Header />
 
-        {sections.map((sec, index) => (
-          <div key={index} className="showcase-block">
+      <section className="research-showcase-section">
+        <div className="research-showcase-container">
 
-            <h3 className="showcase-title">{sec.title}</h3>
+          {sections.map((sec, index) => (
+            <div key={index} className="showcase-block">
 
-            <div className="showcase-grid">
-              {sec.items.map(item => (
-                <div key={item.id} className="showcase-card">
+              <h3 className="showcase-title">{sec.title}</h3>
 
-                  {/* IMAGE */}
-                  {item.img && (
-                    <img src={getImageUrl(item.img)} alt={item.title} className="showcase-img" />
-                  )}
+              <div className="showcase-grid">
+                {Array.isArray(sec.items) && sec.items.map(item => (
+                  <div key={item.id} className="showcase-card">
 
-                  <div className="showcase-content">
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-
-                    {/* Publications Meta */}
-                    {sec.title === "Publications" && (item.author || item.year) && (
-                      <p className="showcase-meta">
-                        {item.author && <>Author: {item.author}</>}
-                        {item.author && item.year && " | "}
-                        {item.year && <>Year: {item.year}</>}
-                      </p>
+                    {item.img && (
+                      <img
+                        src={getImageUrl(item.img)}
+                        alt={item.title}
+                        className="showcase-img"
+                      />
                     )}
+
+                    <div className="showcase-content">
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
+
+                      {sec.title === "Publications" && (item.author || item.year) && (
+                        <p className="showcase-meta">
+                          {item.author && <>Author: {item.author}</>}
+                          {item.author && item.year && " | "}
+                          {item.year && <>Year: {item.year}</>}
+                        </p>
+                      )}
+
+                    </div>
+
                   </div>
+                ))}
+              </div>
 
-                </div>
-              ))}
             </div>
+          ))}
 
-          </div>
-        ))}
+        </div>
+      </section>
 
-      </div>
-    </section>
+      <Footer />
+    </>
   );
 }
