@@ -24,22 +24,42 @@ export default function EventsSection() {
       <h3 className="section-title">Events</h3>
 
       <div className="events-grid">
-        {events.map(e => (
-          <div className="event-card" key={e.id}>
+  {events.map(e => (
+    <div className="event-card" key={e.id}>
 
-            {e.img && (
-              <img
-                src={getImageUrl(e.img)}
-                alt={e.title}
-              />
-            )}
+      {e.img && (
+        <img
+          src={getImageUrl(e.img)}
+          alt={e.title}
+        />
+      )}
 
-            <h5>{e.title}</h5>
-            <p>{e.desc}</p>
-
-          </div>
-        ))}
+      <div className="event-content">
+        <h5>{e.title}</h5>
+        <p>{e.desc}</p>
       </div>
+
+    </div>
+  ))}
+</div><div className="events-grid">
+  {events.map(e => (
+    <div className="event-card" key={e.id}>
+
+      {e.img && (
+        <img
+          src={getImageUrl(e.img)}
+          alt={e.title}
+        />
+      )}
+
+      <div className="event-content">
+        <h5>{e.title}</h5>
+        <p>{e.desc}</p>
+      </div>
+
+    </div>
+  ))}
+</div>
     </section>
   );
 }
