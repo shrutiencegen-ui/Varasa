@@ -360,9 +360,9 @@ html, body {
 /* Grid */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, 340px);
   gap: 36px;
-  justify-content: center;
+  justify-content: center;   /* 👈 important */
 }
 
 
