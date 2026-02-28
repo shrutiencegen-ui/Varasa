@@ -362,8 +362,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 36px;
-  position: relative;
-  z-index: 1;
+  justify-items: center;   /* 🔥 THIS FIXES IT */
 }
 
 
