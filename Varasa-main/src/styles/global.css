@@ -360,9 +360,8 @@ html, body {
 /* Grid */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 340px);
+  grid-template-columns: repeat(4, 1fr); /* 4 cards in one row */
   gap: 36px;
-  justify-content: center;   /* 👈 important */
 }
 
 
@@ -377,8 +376,7 @@ html, body {
   flex-direction: column;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 
-  max-width: 340px;
-  width: 100%;
+  width: 100%;   /* full column width */
 }
 /* Hover */
 .event-card:hover {
