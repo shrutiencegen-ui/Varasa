@@ -31,7 +31,7 @@ export default function ResearchHomeSection() {
               <img
                 src={getImageUrl(item.img)}
                 alt={item.title}
-                className="research-img"
+                className="research-icon"
               />
             )}
 
