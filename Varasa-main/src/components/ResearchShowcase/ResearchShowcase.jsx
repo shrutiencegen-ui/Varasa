@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+
 import  {getSection} from "../../api/contentApi";
 import { getImageUrl } from "../../utils/imageUtils";
 import "./ResearchShowcase.css";  
