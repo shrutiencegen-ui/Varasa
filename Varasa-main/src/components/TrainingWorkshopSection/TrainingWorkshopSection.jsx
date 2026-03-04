@@ -5,11 +5,11 @@ import trainingImg from "../../assets/seminar1.jpg"; // ✅ use your image
 
 export default function TrainingWorkshopSection() {
   const schedule = [
-    { day: "Day 1", topic: "Orientation", activity: "Introduction & Objectives" },
-    { day: "Day 2", topic: "Excavation", activity: "Trenching & Stratigraphy" },
-    { day: "Day 3", topic: "Documentation", activity: "Drawing / Photography / GPS" },
-    { day: "Day 4", topic: "Conservation", activity: "Artifact Handling & Preservation" },
-    { day: "Day 5", topic: "Field Visit", activity: "Heritage Walk & Case Studies" },
+    { day: "Day 1", topic: "Introduction", activity: "Orientation & site review" },
+    { day: "Day 2", topic: "Excavation", activity: "Fieldwork & Trench Marketing" },
+    { day: "Day 3", topic: "Documentation", activity: "Sketching , Photography, Data" },
+    { day: "Day 4", topic: "Conservation", activity: "Handling & cleaning" }
+   
   ];
 
   return (
@@ -43,7 +43,7 @@ export default function TrainingWorkshopSection() {
               program bridges the gap between academic learning and real-world archaeological practice.
             </p>
 
-            <h4 className="training-subheading">Practical Highlights</h4>
+            <h4 className="training-subheading">Program  Highlights</h4>
             <ul className="training-list">
               <li><b>Excavation Techniques:</b> Learn professional excavation methods including trenching, stratigraphic observation, artifact handling, and soil profiling under expert supervision.</li>
               <li><b>Documentation & Recording:</b> Understand the importance of accurate documentation using field notes, drawing, photography, and digital mapping tools (Total Station , GPS, GIS). </li>
@@ -82,7 +82,7 @@ export default function TrainingWorkshopSection() {
 
             <h4 className="training-subheading">Location</h4>
             <p className="training-text">
-              Shriram Fort Region, Pune District, Maharashtra
+              Shivneri Fort Region, Pune District, Maharashtra
             </p>
 
             <h4 className="training-subheading">Eligibility / Who Can Join</h4>

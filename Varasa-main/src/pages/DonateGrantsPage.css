@@ -61,20 +61,22 @@
 
 /* Label */
 .csr-label {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   letter-spacing: 1px;
-  color: #6b2b1c;
-  margin-bottom: 28px;
-  position: relative;
+  color: #7a3f2c;
+  width: fit-content;
+  margin-bottom: 18px;
+  text-transform: uppercase;
 }
 
 .csr-underline {
-  width: 90px;
+  display: block;
+  width: 130px;
   height: 3px;
-  background: #d4af37;
-  margin-top: 8px;
-  border-radius: 2px;
+  background: linear-gradient(to right, #caa85c, #7a3f2c);
+  margin-top: 6px;
+  border-radius: 10px;
 }
 
 /* Each Project Block */

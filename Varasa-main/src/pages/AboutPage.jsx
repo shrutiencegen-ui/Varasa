@@ -61,12 +61,12 @@ Dr. Pawar is a life member of leading professional organizations like ISPQS, SOS
       bottomImg: tiger2,
       pillarClass: "pillar-tall",
       circleImg:Symbol2,
-      subtitle: "Vice President",
-      desc: `<p>**Prof. Yashadatta S. Alone** serves as the **Vice President of VĀRASĀ** – Association for Cultural Heritage and Archaeology and is currently a Professor of **Visual Studies at the School of Arts and Aesthetics, Jawaharlal Nehru University (JNU), New Delhi.**</p>
+      subtitle: "Co-Founder",
+      desc: `<p>**Prof. Yashadatta S. Alone** serves as the **Co-Founder VĀRASĀ ** – Association for Cultural Heritage and Archaeology and is currently a Professor of **Visual Studies at the School of Arts and Aesthetics, Jawaharlal Nehru University (JNU), New Delhi.**</p>
       He holds a **Ph.D.** and **M.Phil.** in History from the Centre for Historical Studies, Jawaharlal Nehru University, and a **Master’s degree** in **Fine Arts (Art History)** from the **Maharaja Sayajirao University of Baroda**. With over **18 years of experience in teaching and research at JNU**, he has previously taught at **Deccan College Postgraduate Research Institute, Pune**, and **Kurukshetra University**.
       <p>Prof. Alone’s academic career is marked by a strong interdisciplinary approach combining art history, archaeology, and cultural theory. His research focuses on ancient Indian and Buddhist art, rock-cut architecture, visual culture of marginalized communities, and Ambedkarite aesthetics. His scholarship reinterprets traditional Indian art through critical social and cultural frameworks, emphasizing inclusivity and philosophical depth.
       He was nominated as an ICCR Chair Visiting Professor at Shenzhen University, China, and has served as a Visiting Professor at several prestigious global universities including Renmin University (Beijing), East China Normal University (Shanghai), Autónoma University (Madrid), and Heidelberg University (Germany).<p/>
-      Prof. Alone has lectured extensively across India, China, Spain, and Germany, contributing to international dialogues on Buddhist visual culture, Indian aesthetics, and contemporary art. He is the author of the acclaimed book “Buddhist Caves of Western India: Forms and Patronage”, which offers an analytical understanding of the social and cultural contexts of Buddhist cave architecture.**.
+      Prof. Alone has lectured extensively across India, China, Spain, and Germany, contributing to international dialogues on Buddhist visual culture, Indian aesthetics, and contemporary art. He is the author of the acclaimed book “Buddhist Caves of Western India: Forms and Patronage”, which offers an analytical understanding of the social and cultural contexts of Buddhist cave architecture.
       <p>His pioneering conceptual framework, “Protected Ignorance”, critically examines the politics of knowledge and exclusion within the field of art history. Prof. Alone’s academic excellence has been recognized through several fellowships, including the UGC Research Fellowship, and his service as an expert member on the Planning Commission’s Expert Group on Culture, Ministry of Culture, Government of India.`,
     },
     {
@@ -79,7 +79,7 @@ Dr. Pawar is a life member of leading professional organizations like ISPQS, SOS
       subtitle: "Treasurer",
       desc: `**Adv. Ganesh Halkare**  is a practicing advocate with deep expertise in heritage law, property rights, and cultural conservation policy. 
       With a strong commitment to safeguarding India’s tangible and intangible heritage, he provides valuable legal and administrative guidance to VĀRASĀ Foundation. His work focuses on legal compliance in heritage conservation projects, intellectual property rights related to archaeological research, and the protection of historically significant sites under state and national legislation.
-      Adv.Halkare has been instrumental in structuring legal frameworks for heritage preservation initiatives and fostering collaborations between government bodies, NGOs, and research organizations. His vision is to ensure that every cultural asset is protected with integrity and transparency for future generations.`,
+      <br> Adv.Halkare has been instrumental in structuring legal frameworks for heritage preservation initiatives and fostering collaborations between government bodies, NGOs, and research organizations. His vision is to ensure that every cultural asset is protected with integrity and transparency for future generations.`,
     },
  
     {
@@ -88,8 +88,17 @@ Dr. Pawar is a life member of leading professional organizations like ISPQS, SOS
       sideImg: Statue,
       circleImg:Symbol5,
 
-      subtitle: "Archaeologist | Heritage Conservationist |Co-Founder VĀRASĀ Foundation",
+      subtitle: "Archaeologist | Heritage Conservationist | VĀRASĀ Association",
       desc: `Ms.Leena Zilpe is a leading national conservator of cultural property at the National Research Laboratory for Conservation of Cultural Property (NRLC), under India’s Ministry of Culture. Based in Nagpur, she has spearheaded the preservation of iconic collections, including Mahatma Gandhi’s personal artifacts (2008–2010) and over 170 items belonging to Dr. B. R. Ambedkar for a museum in Chicholi. A postgraduate in Applied Art as well as Archaeology from Nagpur University, she topped her museology course at NRLC’s Lucknow center and holds multi-disciplinary expertise in ancient Indian history, linguistics (Sanskrit, Prakrit, Pali, Urdu), and conservation techniques. Her projects include restoring masterpieces by Gaitonde and Raza, reconstructing a 51‑feet Bhagavad Gita scroll, and preserving temple paintings, palm-leaf manuscripts, and historic textiles. Through her initiatives, she advocates minimal-intervention principles and sustainable preservation practices tailored to climate‑vulnerable contexts.`,
+    },
+      {
+      img: advisor,
+      title: "",
+      sideImg: Statue,
+      circleImg:Symbol5,
+
+      subtitle: "",
+      desc: `.`,
     },
     {
       img: advisor5,
@@ -97,7 +106,7 @@ Dr. Pawar is a life member of leading professional organizations like ISPQS, SOS
       sideImg: ShivMudra,
       circleImg:Symbol2,
       subtitle: "Archaeologist | Research Scholar | Heritage Documentation Specialist",
-      desc: `a PhD scholar at Nagpur University, specializes in Ancient Indian Culture and Archaeology. A 2016 postgraduate from St. Xavier's College, Mumbai, he has expertise in temple architecture, iconography, and heritage studies, focusing on the Kalachuris and Central India. He has led key projects like the Sirpur Heritage Assessment and Bandhavgarh excavations, the latter earning global acclaim. Shivam has presented 25+ papers, authored 19+ publications and 11 books, and conducted extensive fieldwork across Madhya Pradesh. He collaborates with ASI, Indian Archaeological Society, and others, promoting heritage awareness via platforms like the G20 Summit and Heritage Pathshala.`,
+      desc: `A PhD scholar at Nagpur University, specializes in Ancient Indian Culture and Archaeology. A 2016 postgraduate from St. Xavier's College, Mumbai, he has expertise in temple architecture, iconography, and heritage studies, focusing on the Kalachuris and Central India. He has led key projects like the Sirpur Heritage Assessment and Bandhavgarh excavations, the latter earning global acclaim. Shivam has presented 25+ papers, authored 19+ publications and 11 books, and conducted extensive fieldwork across Madhya Pradesh. He collaborates with ASI, Indian Archaeological Society, and others, promoting heritage awareness via platforms like the G20 Summit and Heritage Pathshala.`,
     },
     {
       img: advisor6,
@@ -172,15 +181,15 @@ Dr. Pawar is a life member of leading professional organizations like ISPQS, SOS
                   <h2>Our Mission</h2>
 
             <ul>
-              <li><strong>Heritage Research & Conservation:</strong> Conducting explorations, excavations, and documentation for preservation of ancient materials and artifacts.</li>
-              <li><strong>Scholarship & Academic Support:</strong> Providing research opportunities and grants for students and professionals.</li>
-              <li><strong>Education & Awareness:</strong> Organizing seminars, heritage walks, and workshops for public engagement.</li>
-              <li><strong>Publications:</strong> Publishing journals, books, and original materials to promote heritage education.</li>
-              <li><strong>Community Outreach:</strong> Conducting awareness campaigns and creative collaborations for heritage protection.</li>
-              <li><strong>Museums & Cultural Spaces:</strong> Establishing galleries and repositories for interactive education.</li>
-              <li><strong>Digital Integration:</strong> Creating online repositories and interactive research databases.</li>
-            </ul>
-            <button className="know-more-btn">Know More</button>
+               <li><strong>Heritage Research & Conservation:</strong> Conducting explorations, excavations, and documentation for preservation of ancient monuments and artifacts.</li>
+            <li><strong>Scholarship & Academic Support:</strong> Providing research opportunities and grants for students and heritage professionals.</li>
+            <li><strong>Education & Awareness:</strong> Organizing seminars, heritage walks, and workshops for public engagement.</li>
+            <li><strong>Publications:</strong> Publishing journals, books, and  Digital materials to promote heritage education.</li>
+            <li><strong>Community Outreach:</strong> Conducting awareness campaigns and mobile exhibitions for public participation.</li>
+            <li><strong>Museums & Cultural Spaces:</strong> Establishing galleries and collaborative museum projects.</li>
+            <li><strong>Digital Integration:</strong> Creating online repositories and interactive research databases.</li>
+          </ul>
+           <button className="know-more-btn">Know More</button> 
           </div>
 
           {/* --- Vision Section --- */}

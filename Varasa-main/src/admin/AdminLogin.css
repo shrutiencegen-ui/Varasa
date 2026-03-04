@@ -114,12 +114,20 @@
   position: relative;
 }
 
+/* Eye icon always clearly visible */
 .toggle-pass {
   position: absolute;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  color: #5a2d1a;
+  opacity: 0.9;
+}
+
+/* Proper spacing between error and button */
+.input-group {
+  margin-bottom: 12px;
 }
 /* ================= RESPONSIVE ================= */
 

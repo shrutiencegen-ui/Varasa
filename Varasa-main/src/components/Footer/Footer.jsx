@@ -9,17 +9,19 @@ export default function Footer() {
           <div className="footer-logo">
             <img src={footerLogo} alt="Varasa Logo" className="logo-img" />
             <p>
-              {/* VW_078 & VW_079: Full Organization Name */}
-              VĀRASĀ - Association for Cultural Heritage and Archaeology. 
+            
+              <span className="brand-namee">
+            V<span className="macroon">A</span>RAS<span className="macroon">A</span>
+            </span> - Association for Cultural Heritage and Archaeology. 
               A non-profit organization dedicated to cultural heritage preservation, 
               archaeological research, and awareness initiatives. We work towards safeguarding tangibleand intangible heritage for future generations.
             </p>
           </div>
 
           <div className="footer-links">
-            <h4>Quick Links</h4> {/* VW_077: Proper Case */}
+            <h4>Quick Links</h4> 
             <ul>
-              <li><a href="/">Home</a></li> {/* VW_076: Added Home link */}
+              <li><a href="/">Home</a></li> 
               <li><a href="/about">About Us</a></li>
               <li><a href="/events">Events</a></li>
               <li><a href="/research">Research</a></li>
@@ -30,10 +32,10 @@ export default function Footer() {
           <div className="footer-contact">
             <h4>Contact Details</h4>
             <p>
-              {/* VW_079: Added 'Address:' label and full name */}
+             
               <strong>Address:</strong> <br />
-              Association for Cultural Heritage and Archaeology <br />
-              A-903 Ruturang Society, behind Paranjape School, <br />
+                Varasa - Association for Cultural Heritage and Archaeology <br />
+               A-903 Ruturang Society, behind Paranjape School, <br />
               Pune, Maharashtra – 411038, India
             </p>
             <p><strong>Phone:</strong> +91-9881409532</p>
@@ -54,7 +56,9 @@ export default function Footer() {
 
       <div className="footer-bottom-bar">
         <div className="footer-bottom">
-          <span className="brand-highlight">VĀRASĀ</span> © 2025 Association for Cultural Heritage and Archaeology. {/* VW_080: Company Name Added */}
+          <span className="brand-name">
+            V<span className="macron">A</span>RAS<span className="macron">A</span>
+            </span> © 2025 Association for Cultural Heritage and Archaeology. {/* VW_080: Company Name Added */}
           <br /> All Rights Reserved | Designed by Laxman Dagade
         </div>
       </div>

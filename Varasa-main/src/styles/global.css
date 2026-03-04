@@ -542,6 +542,64 @@ html, body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.brand-name-home {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.2px;
+}
+
+.macronaa {
+  position: relative;
+}
+
+.macronaa::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.5px;
+  width: 0.4rem;
+  height: 2px;
+ background-color: #965e45;
+}
+.brand-name {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.4px;
+}
+
+.macron {
+  position: relative;
+}
+
+.macron::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.5px;
+  width: 0.6rem;
+  height: 2px;
+ background-color: #5a3e2b;
+}
+
+.brand-namee {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.4px;
+}
+
+.macroon {
+  position: relative;
+}
+
+.macroon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.5px;
+  width: 0.4rem;
+  height: 2px;
+ background-color: #ffffff;
+}
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1200px) {

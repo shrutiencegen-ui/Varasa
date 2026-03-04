@@ -21,11 +21,11 @@ export default function ProgramsSection() {
 
   return (
     <section id="programs" className="programs-section">
-      <h3 className="section-title">Programs</h3>
+      <h3 className="section-title">Projects</h3>
 
       <div className="events-grid">
         {programs.map(p => {
-          // इमेज पाथ तयार करताना स्लॅश नीट तपासा
+         
           const imagePath = p.img && (p.img.startsWith('/') ? p.img : `/${p.img}`);
           const fullImageUrl = p.img ? `${BASE_URL}${imagePath}` : null;
 

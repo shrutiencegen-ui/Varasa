@@ -2,11 +2,10 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import AboutSection from "../components/AboutSection/AboutSection";
-import EventsSection from "../components/EventsSection/EventsSection";
-import ProgramsSection from "../components/ProgramsSection/ProgramsSection";
-import ResearchSection from "../components/ResearchSection/ResearchSection";
 import HeritageBanner from "../components/HeritageBanner/HeritageBanner";
 import Footer from "../components/Footer/Footer";
+import AboutMission from "../components/AboutMission/AboutMission";
+import ProgramsSection from "../components/ProgramsSection/ProgramsSection";  
 
 export default function HomePage() {
   return (
@@ -14,9 +13,9 @@ export default function HomePage() {
       <Header />
       <Hero />
       <AboutSection />
-      <EventsSection />
+      <AboutMission/>
+      
       <ProgramsSection />
-      <ResearchSection />
       <HeritageBanner />
       <Footer />
     </>

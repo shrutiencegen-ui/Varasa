@@ -28,7 +28,7 @@ export default function Header() {
       <div className="top-bar">
         <div className="top-bar-inner">
           <span className="brand-highlight">VĀRASĀ</span>
-          Association for Cultural Heritage and Archaeology
+          - Association for Cultural Heritage and Archaeology
         </div>
       </div>
 

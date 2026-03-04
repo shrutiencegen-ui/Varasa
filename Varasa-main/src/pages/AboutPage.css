@@ -72,11 +72,14 @@ body {
 .horizontal-yellow-line,
 .horizontal-yellow-lin {
   position: relative;
-  width: 100%;
+  width: 140vw;              /* full viewport width */
   height: 120px;
+  left: 50%;
+  transform: translateX(-50%);  /* center align */
   margin-top: -90px;
   z-index: -1;
 }
+
 .horizontal-yellow-line {
   background-color: #D4AF37;
 }

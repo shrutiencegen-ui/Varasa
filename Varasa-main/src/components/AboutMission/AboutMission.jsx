@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutMission.css";
-import advisor3 from "../../assets/advisor3.png";
+import advisor3 from "../../assets/Star.png";
 
 export default function AboutMission() {
   return (
@@ -19,7 +19,7 @@ export default function AboutMission() {
             <li><strong>Heritage Research & Conservation:</strong> Conducting explorations, excavations, and documentation for preservation of ancient monuments and artifacts.</li>
             <li><strong>Scholarship & Academic Support:</strong> Providing research opportunities and grants for students and heritage professionals.</li>
             <li><strong>Education & Awareness:</strong> Organizing seminars, heritage walks, and workshops for public engagement.</li>
-            <li><strong>Publications:</strong> Publishing journals, books, and original materials to promote heritage education.</li>
+            <li><strong>Publications:</strong> Publishing journals, books, and  Digital materials to promote heritage education.</li>
             <li><strong>Community Outreach:</strong> Conducting awareness campaigns and mobile exhibitions for public participation.</li>
             <li><strong>Museums & Cultural Spaces:</strong> Establishing galleries and collaborative museum projects.</li>
             <li><strong>Digital Integration:</strong> Creating online repositories and interactive research databases.</li>

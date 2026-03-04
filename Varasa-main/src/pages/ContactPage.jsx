@@ -14,53 +14,82 @@ export default function ContactPage() {
   });
 
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
 
-  const validate = (name, value) => {
+  const validateField = (key, value) => {
     let error = "";
-    if (name === "fullName") {
+
+    if (key === "fullName") {
       if (!value) error = "Full Name is required";
-      else if (!/^[a-zA-Z\s]*$/.test(value)) error = "Only alphabets are allowed"; // VW_145
-      else if (value.length > 50) error = "Maximum 50 characters allowed"; // VW_137
+      else if (!/^[a-zA-Z\s]*$/.test(value))
+        error = "Only alphabets are allowed";
+      else if (value.length > 50)
+        error = "Maximum 50 characters allowed";
     }
 
-    if (name === "email") {
+    if (key === "email") {
       if (!value) error = "Email is required";
-      else if (!/\S+@\S+\.\S+/.test(value)) error = "Invalid email format";
+      else if (!/\S+@\S+\.\S+/.test(value))
+        error = "Invalid email format";
     }
 
-    if (name === "phone") {
+    if (key === "phone") {
       if (!value) error = "Phone number is required";
-      else if (!/^\d*$/.test(value)) error = "Only numbers allowed"; // VW_141, VW_144
-      else if (value.length !== 10) error = "Phone number must be 10 digits"; // VW_142
+      else if (!/^\d*$/.test(value))
+        error = "Only numbers allowed";
+      else if (value.length !== 10)
+        error = "Phone number must be 10 digits";
     }
 
-    if (name === "message" && !value) {
-      error = "Message cannot be empty"; // VW_143
+    if (key === "message") {
+      if (!value) error = "Message cannot be empty";
     }
 
-    setErrors((prev) => ({ ...prev, [name]: error }));
+    return error;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    validate(name, value);
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    const error = validateField(name, value);
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Final check before submission
+
     const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) newErrors[key] = `${key} is required`;
+
+    Object.entries(formData).forEach(([key, value]) => {
+      const error = validateField(key, value);
+      if (error) newErrors[key] = error;
     });
 
-    if (Object.keys(newErrors).length > 0 || Object.values(errors).some(err => err)) {
-      setErrors(newErrors);
-      alert("Please fix the errors before submitting"); // VW_151
-    } else {
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
       console.log("Form Submitted:", formData);
-      alert("Thank you! Your message has been sent.");
+
+      setSuccess(true);
+
+      // Optional: reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } else {
+      setSuccess(false);
     }
   };
 
@@ -70,7 +99,11 @@ export default function ContactPage() {
       <section className="contact-page">
         <div className="contact-card">
           <div className="contact-top">
-            <img src={logoSymbol} alt="Varasa Logo" className="contact-logo" />
+            <img
+              src={logoSymbol}
+              alt="Varasa Logo"
+              className="contact-logo"
+            />
             <p className="contact-subtitle">
               Association for Cultural Heritage and Archaeology
             </p>
@@ -79,16 +112,22 @@ export default function ContactPage() {
           <div className="contact-title-bar">Contact Us</div>
 
           <div className="contact-content">
-            <div className="contact-left" style={{ backgroundImage: `url(${bg})` }}>
+            <div
+              className="contact-left"
+              style={{ backgroundImage: `url(${bg})` }}
+            >
               <div className="contact-left-circle">
                 <h2>Experience Varasa’s</h2>
-                {/* VW_136: Missing content added */}
-                <p>Research & Knowledge Corner</p> 
+                <p>Research & Knowledge Corner</p>
                 <p>Cultural Heritage & Archaeology</p>
               </div>
             </div>
 
-            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <form
+              className="contact-form"
+              onSubmit={handleSubmit}
+              noValidate
+            >
               <div className="form-group">
                 <label>Full Name</label>
                 <input
@@ -98,7 +137,11 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="Enter your full name"
                 />
-                {errors.fullName && <span className="error-text">{errors.fullName}</span>}
+                {errors.fullName && (
+                  <span className="error-text">
+                    {errors.fullName}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -110,7 +153,11 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="example@mail.com"
                 />
-                {errors.email && <span className="error-text">{errors.email}</span>}
+                {errors.email && (
+                  <span className="error-text">
+                    {errors.email}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -123,7 +170,11 @@ export default function ContactPage() {
                   placeholder="10 digit number"
                   maxLength="10"
                 />
-                {errors.phone && <span className="error-text">{errors.phone}</span>}
+                {errors.phone && (
+                  <span className="error-text">
+                    {errors.phone}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -135,7 +186,11 @@ export default function ContactPage() {
                   onChange={handleChange}
                   placeholder="Your message here..."
                 ></textarea>
-                {errors.message && <span className="error-text">{errors.message}</span>}
+                {errors.message && (
+                  <span className="error-text">
+                    {errors.message}
+                  </span>
+                )}
               </div>
 
               <p className="privacy-note">
@@ -145,6 +200,12 @@ export default function ContactPage() {
               <button type="submit" className="submit-btn">
                 SUBMIT
               </button>
+
+              {success && (
+                <p className="success-text">
+                  ✅ Thank you! Your message has been sent.
+                </p>
+              )}
             </form>
           </div>
         </div>

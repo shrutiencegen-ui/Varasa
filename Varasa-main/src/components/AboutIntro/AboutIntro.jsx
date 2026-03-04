@@ -14,9 +14,11 @@ export default function AboutIntro() {
 
         {/* RIGHT SIDE — TEXT */}
         <div className="about-content">
-          <h2>About <span className="highlight">Varasa</span></h2>
+          <h2>About <span className="highlight">V&#256;RAS&#256;</span></h2>
           <p>
-            VĀRASĀ Association for Cultural Heritage and Archaeology, Pune established under
+           <span className="brand-name">
+            V<span className="macron">A</span>RAS<span className="macron">A</span>
+            </span> - Association for Cultural Heritage and Archaeology, Pune established under
             Societies Registration Act, 1860 and Bombay Public Trust Act (est. 4th November 2011
             Reg. No. Maha. 1918/2011) is a non-profit organization committed to the heritage
             preservation, research, and promotion of tangible and intangible cultural heritage
@@ -26,7 +28,9 @@ export default function AboutIntro() {
           </p>
           <p>
             With a team of passionate archaeologists, scientists, historians, conservationists,
-            and heritage professionals, VĀRASĀ actively engages in excavation projects,
+            and heritage professionals, <span className="brand-name">
+            V<span className="macron">A</span>RAS<span className="macron">A</span>
+            </span> actively engages in excavation projects,
             documentation, conservation and restoration of heritage sites, ensuring that
             history remains accessible and meaningful for future generations.
           </p>
