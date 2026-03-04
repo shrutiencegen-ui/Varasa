@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
-
-import  {getSection} from "../../api/contentApi";
+import { getSection } from "../../api/contentApi";
 import { getImageUrl } from "../../utils/imageUtils";
-import "./ResearchShowcase.css";  
-
+import "./ResearchShowcase.css";
 
 export default function ResearchShowcase() {
   const [publications, setPublications] = useState([]);
@@ -49,14 +47,12 @@ export default function ResearchShowcase() {
 
       <section className="research-showcase-section">
         <div className="research-showcase-container">
-
           {sections.map((sec, index) => (
             <div key={index} className="showcase-block">
-
               <h3 className="showcase-title">{sec.title}</h3>
 
               <div className="showcase-grid">
-                {Array.isArray(sec.items) && sec.items.map(item => (
+                {sec.items.map(item => (
                   <div key={item.id} className="showcase-card">
 
                     {item.img && (
@@ -71,27 +67,23 @@ export default function ResearchShowcase() {
                       <h4>{item.title}</h4>
                       <p>{item.desc}</p>
 
-                      {sec.title === "Publications" && (item.author || item.year) && (
-                        <p className="showcase-meta">
-                          {item.author && <>Author: {item.author}</>}
-                          {item.author && item.year && " | "}
-                          {item.year && <>Year: {item.year}</>}
-                        </p>
-                      )}
-
+                      {sec.title === "Publications" &&
+                        (item.author || item.year) && (
+                          <p className="showcase-meta">
+                            {item.author && <>Author: {item.author}</>}
+                            {item.author && item.year && " | "}
+                            {item.year && <>Year: {item.year}</>}
+                          </p>
+                        )}
                     </div>
 
                   </div>
                 ))}
               </div>
-
             </div>
           ))}
-
         </div>
       </section>
-
-     
     </>
   );
 }
