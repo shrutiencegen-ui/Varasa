@@ -8,9 +8,8 @@ import {
 } from "../api/contentApi";
 import "./admin.css";
 import logoSymbol from "../assets/logo-symbol.png";
-import { X } from "lucide-react"; 
+import { X } from "lucide-react";
 
-const IMG_BASE_URL = "https://varasa-1.onrender.com";
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 
 const pageSections = {
@@ -38,7 +37,7 @@ export default function AdminDashboard() {
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false); // आता हे वापरले जाईल
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   const currentSectionObj = pageSections[page]?.find(
     sec => sec.key === section
@@ -47,19 +46,16 @@ export default function AdminDashboard() {
   const isEventSection =
     section === "events" || section === "events_page";
 
-  /* Auth Check */
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) window.location.href = "/admin-login";
   }, []);
 
-  /* Reset on page change */
   useEffect(() => {
     setSection(pageSections[page][0].key);
     setSelected(null);
   }, [page]);
 
-  /* Load Data */
   useEffect(() => {
     async function load() {
       try {
@@ -121,14 +117,12 @@ export default function AdminDashboard() {
     }
     setLoading(false);
   };
-  const getImageUrl = (imgStr) => {
-    if (!imgStr) return "";
-    return imgStr.startsWith("http") ? imgStr : `${IMG_BASE_URL}${imgStr}`;
-  };
+
+  const getImageUrl = (imgStr) => imgStr || "";
 
   return (
     <div className="admin-layout">
-      
+
       {/* SIDEBAR */}
       <div className="admin-sidebar">
         <div className="sidebar-top">
@@ -258,7 +252,7 @@ export default function AdminDashboard() {
                   src={getImageUrl(selected.img)}
                   alt="Thumbnail"
                   className="admin-preview-thumb cursor-pointer"
-                  onClick={() => setPreviewOpen(true)} // आता स्टेट वापरली गेली!
+                  onClick={() => setPreviewOpen(true)}
                 />
               </div>
             )}
@@ -278,17 +272,25 @@ export default function AdminDashboard() {
         )}
       </div>
 
-      {/* FULL IMAGE PREVIEW MODAL */}
       {previewOpen && selected?.img && (
-        <div className="image-full-preview-overlay" onClick={() => setPreviewOpen(false)}>
-          <div className="preview-modal-content" onClick={e => e.stopPropagation()}>
-            <button className="close-preview" onClick={() => setPreviewOpen(false)}>
+        <div
+          className="image-full-preview-overlay"
+          onClick={() => setPreviewOpen(false)}
+        >
+          <div
+            className="preview-modal-content"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              className="close-preview"
+              onClick={() => setPreviewOpen(false)}
+            >
               <X size={30} />
             </button>
-            <img 
-              src={getImageUrl(selected.img)} 
-              alt="Full Preview" 
-              className="full-img" 
+            <img
+              src={getImageUrl(selected.img)}
+              alt="Full Preview"
+              className="full-img"
             />
           </div>
         </div>

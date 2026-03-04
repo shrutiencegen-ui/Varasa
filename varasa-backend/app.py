@@ -7,6 +7,8 @@ from routes.auth import auth_bp
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from dotenv import load_dotenv
+import cloudinary
+import cloudinary.uploader
 load_dotenv()
 app = Flask(__name__)
 
@@ -22,6 +24,12 @@ app.config["JWT_SECRET_KEY"] = os.environ.get(
 app.config["JWT_TOKEN_LOCATION"] = ["headers"]
 app.config["JWT_HEADER_NAME"] = "Authorization"
 app.config["JWT_HEADER_TYPE"] = "Bearer"
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUD_NAME"),
+    api_key=os.environ.get("CLOUD_API_KEY"),
+    api_secret=os.environ.get("CLOUD_API_SECRET")
+)
 
 jwt = JWTManager(app)
 
@@ -60,10 +68,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # ---------------- UPLOAD FOLDER ----------------
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # ---------------- INIT DATABASE ----------------
 
@@ -80,9 +85,7 @@ app.register_blueprint(auth_bp, url_prefix="/api")
 
 # ---------------- SERVE UPLOADED IMAGES ----------------
 
-@app.route("/uploads/<path:filename>")
-def uploaded_file(filename):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+
 
 # ---------------- HEALTH CHECK ----------------
 

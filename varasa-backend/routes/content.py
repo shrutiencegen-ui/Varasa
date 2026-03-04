@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from database import db
 from models import Content
 from flask_jwt_extended import jwt_required
-
+import cloudinary.uploader
 content_bp = Blueprint("content", __name__)
 
 # ---------------- GET SECTION (PUBLIC) ----------------
@@ -130,15 +130,14 @@ def upload():
     if not allowed_file(file.filename):
         return jsonify({"message": "Invalid file type"}), 400
 
-    filename = secure_filename(file.filename)
-    unique_name = f"{uuid.uuid4().hex}_{filename}"
+    try:
+        result = cloudinary.uploader.upload(file)
 
-    file_path = os.path.join(
-        current_app.config["UPLOAD_FOLDER"], unique_name
-    )
-    file.save(file_path)
+        return jsonify({
+            "url": result["secure_url"]   # FULL HTTPS URL
+        }), 200
 
-    # 🔥 IMPORTANT: Return RELATIVE path only
-    return jsonify({
-        "url": f"/uploads/{unique_name}"
-    }), 200
+    except Exception as e:
+        return jsonify({"message": "Upload failed", "error": str(e)}), 500
+
+   
